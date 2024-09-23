@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Clone repo') {
             steps {
-                echo 'Cloning this repository...'
+                echo 'Clone this repository...'
                 git credentialsId: 'gitconnect', url: 'https://github.com/Ngumonelson123/gallery.git'
             }
         }
