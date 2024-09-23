@@ -53,6 +53,20 @@ pipeline {
                         }
 
                     }
+                    stage('send message to slack'){
+                        steps{
+                            slackSend(
+                    botUser: true, 
+                    channel: 'CHANNEL', 
+                    color: '',  
+                    message: "Deployment successful! Build ID - ${env.BUILD_ID}. Check the deployed site: SITE", 
+                    teamDomain: 'Wordspace', 
+                    tokenCredentialId: 'slackconnection'
+                )
+
+                        }
+                    }
+                    
     }
 
     post {
