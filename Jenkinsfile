@@ -41,7 +41,7 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Deploy to Render122') {
+        stage('Deploying to Render122') {
                         steps {
                             script {
                                 def response = sh(script: """
