@@ -57,11 +57,11 @@ pipeline {
                         steps{
                             slackSend(
                     botUser: true, 
-                    channel: 'CHANNEL', 
+                    channel: 'C07NF1PDEM9', 
                     color: '',  
-                    message: "Deployment successful! Build ID - ${env.BUILD_ID}. Check the deployed site: SITE", 
-                    teamDomain: 'Wordspace', 
-                    tokenCredentialId: 'slackconnection'
+                    message: "Deployment successful! Build ID - ${env.BUILD_ID}. Check the deployed site: https://gallery-pqk9.onrender.com", 
+                    teamDomain: 'DevOps Engineer', 
+                    tokenCredentialId: 'slacklog'
                 )
 
                         }
