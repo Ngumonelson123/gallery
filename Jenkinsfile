@@ -3,6 +3,10 @@ pipeline {
     tools {
         nodejs 'NodeJS 22.9.0' // Ensure this name matches your Global Tool Configuration
     }
+    environment {
+        DEPLOY_HOOK_URL = 'https://api.render.com/deploy/srv-cron5aqj1k6c739kp860?key=gQI_k4GuIYg' 
+      
+    }
 
     stages {
         stage('Node Version') {
@@ -37,14 +41,18 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the app...'
-                timeout(time: 5, unit: 'MINUTES') {  // Timeout to avoid infinite waiting
-                    sh 'node server.js'
-                }
-            }
-        }
+        stage('Deploy to Render122') {
+                        steps {
+                            script {
+                                def response = sh(script: """
+                                    curl -X POST ${DEPLOY_HOOK_URL}
+                                """, returnStdout: true).trim()
+                                
+                                echo "Deployment Response: ${response}"
+                            }
+                        }
+
+                    }
     }
 
     post {
