@@ -53,7 +53,7 @@ pipeline {
                         }
 
                     }
-                    stage('sending message to slack'){
+                    stage('send message to slack'){
                         steps{
                             slackSend(
                     botUser: true, 
